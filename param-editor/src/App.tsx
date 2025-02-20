@@ -4,7 +4,7 @@ import React from 'react';
 interface Param {
     id: number;
     name: string;
-    type: 'string';
+    type: string;
 }
 
 interface ParamValue {
@@ -58,8 +58,8 @@ class ParamEditor extends React.Component<Props, State> {
                         '';
 
                     return (
-                        <div key={param.id} style={{ display: 'flex', marginBottom: '8px' }}>
-                            <label style={{ width: '150px' }}>{param.name}</label>
+                        <div key={param.id} className={"div-InputEditContainer"}>
+                            <label>{param.name}</label>
                             <input
                                 type="text"
                                 value={paramValue}
