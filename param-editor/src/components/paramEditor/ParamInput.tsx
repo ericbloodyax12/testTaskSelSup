@@ -1,6 +1,8 @@
 import React from 'react';
 import {Param} from "../../types";
 
+import "./paramInput.css"
+
 interface TParamInputProps  {
     param: Param;
     value: string;
@@ -9,7 +11,7 @@ interface TParamInputProps  {
 
 export const ParamInput: React.FC<TParamInputProps> = ({param, value, onChange}) => {
     return (
-        <div>
+        <div className={"paramInput"}>
             <label>{param.name}</label>
             <input
                 type="text"
