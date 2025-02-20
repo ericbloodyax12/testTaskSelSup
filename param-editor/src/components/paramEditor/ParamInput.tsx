@@ -1,15 +1,20 @@
 import React from 'react';
+import {Param} from "../../types";
 
-type TParamInputProps = {}
+interface TParamInputProps  {
+    param: Param;
+    value: string;
+    onChange: (paramId: number,value: string) => void;
+}
 
-export const ParamInput: React.FC<TParamInputProps> = ({}) => {
+export const ParamInput: React.FC<TParamInputProps> = ({param, value, onChange}) => {
     return (
         <div>
-            <label></label>
+            <label>{param.name}</label>
             <input
                 type="text"
-                onChange={(e) => {
-                    console.log(e.target.value);}}
+                value={value}
+                onChange={(e) => onChange(param.id,e.target.value)}
             />
         </div>
     );

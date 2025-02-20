@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Model, Param, ParamValue} from "../../types";
+import {ParamInput} from "./ParamInput.tsx";
 
 interface TParamEditorProps  {
     params: Param[];
@@ -12,7 +13,7 @@ export const ParamEditor: React.FC<TParamEditorProps> = ({params, model}) => {
 
     return (
         <div>
-
+            <ParamInput />
         </div>
     );
 }
