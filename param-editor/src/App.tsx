@@ -7,7 +7,8 @@ function App() {
 
   return (
     <>
-      <h1>Vite + React</h1>
+        <button onClick={() => setCount(count + 1)}>increment</button>
+      <h1>{count}</h1>
     </>
   )
 }
