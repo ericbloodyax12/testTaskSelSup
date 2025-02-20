@@ -1,33 +1,33 @@
 import './App.css'
 import React from 'react';
 
-interface Param {
+interface Param<T = string> {
     id: number;
     name: string;
-    type: string;
+    type: T;
 }
 
-interface ParamValue {
+interface ParamValue<T = string> {
     paramId: number;
-    value: string;
+    value: T;
 }
 
-interface Model {
-    paramValues: ParamValue[];
+interface Model<T = string> {
+    paramValues: ParamValue<T>[];
     colors: string[];
 }
 
-interface Props {
-    params: Param[];
-    model: Model;
+interface Props<T = string> {
+    params: Param<T>[];
+    model: Model<T>;
 }
 
-interface State {
-    paramValues: ParamValue[];
+interface State<T = string> {
+    paramValues: ParamValue<T>[];
 }
 
-class ParamEditor extends React.Component<Props, State> {
-    constructor(props: Props) {
+class ParamEditor<T = string> extends React.Component<Props<T>, State<T>> {
+    constructor(props: Props<T>) {
         super(props);
         this.state = {
             paramValues: props.model.paramValues,
@@ -35,14 +35,14 @@ class ParamEditor extends React.Component<Props, State> {
     }
 
 
-    handleChange = (paramId: number, value: string) => {
+    handleChange = (paramId: number, value: T) => {
         this.setState((prevState) => ({
             paramValues: prevState.paramValues.map((p) =>
                 p.paramId === paramId ? { ...p, value } : p
             ),
         }));
     };
-    getModel = (): Model => {
+    getModel = (): Model<T> => {
         return {
             paramValues: this.state.paramValues,
             colors: [],
@@ -62,9 +62,9 @@ class ParamEditor extends React.Component<Props, State> {
                             <label>{param.name}</label>
                             <input
                                 type="text"
-                                value={paramValue}
+                                value={paramValue as string}
                                 onChange={(e) =>
-                                    this.handleChange(param.id, e.target.value)
+                                    this.handleChange(param.id, e.target.value as T)
                                 }
                             />
                         </div>
